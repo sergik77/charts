@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" href="css/common.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div class="chart">
+
+        </div>
+        <section>
+            <div class="row">
+                <div class="col-6">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <script>
+                        var year = 2019;
+                        var years = new Array();
+                        var summ4 = 0;
+                        var summs = new Array();
+                        for (var i = 0, max = 10; i < max; i++) {
+                            year = year + 1;
+                            years.push(year);
+
+                        }
+                        var summ1 = 10000;
+                        var summ2 = 5;
+                        for (var i = 0; i < summ2; i++) {
+                            var summ3 = summ1 * 0.11;
+                            summ4 = summ4 + summ3;
+
+                            summs.push(summ4);
+
+                        }
+
+                        var ctx = document.getElementById('myChart');
+                        var myChart = new Chart(ctx, {
+
+                            type: 'bar',
+                            data: {
+                                labels: years,
+                                datasets: [{
+                                        label: '# of Votes',
+                                        data: summs,
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+
+                                        borderWidth: 1
+                                    }, {
+                                        data: [50, 50, 50, 50],
+
+                                        // Changes this dataset to become a line
+                                        type: 'bar'
+                                    }
+                                ]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: 'Chart.js'
+                                },
+                                scales: {
+                                    yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+                <div class="col-6">
+                    <input type="range" name="summ1" min="100000" max="5000000" step="100000" value="500000" id="summ1-range" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
+
+                    <input type="range" name="summ2" min="1" max="10" step="1" value="3" id="summ2-range" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
+
+                </div>
+            </div>    
+        </section>
+
+        <script>
+            document.body.style.color = '#abc';
+            var mas = [5, 8, 2, 1, 15, 2, 3, 5, 9, 11, 10, 4, 3, 14, 1, 7, 10, 3, 2, 13];
+            var chart = document.getElementsByClassName('chart')[0];
+            for (var i = 0; i < mas.length; i++) {
+
+                if (mas[i] <= 5) {
+                    var div = chart.insertAdjacentHTML("beforeEnd", "<div  class='green' style='height:" + mas[i] * 10 + "px'>" + mas[i] + "");
+//chart.div.className = "green";
+//div.style.width="100px";
+//                    var div = '<div class="green">' + mas[i] + '</div>';
+//                    chart.insertAdjacentHTML = div;
+//                    var div = document.createElement('div');
+//                    
+//                    div.insertAdjacentHTML = "<strong>'+max[i]+'</strong> Вы прочитали это важное сообщение.";
+//                    '<div class="green"></div>';
+                } else if (mas[i] <= 10) {
+                    chart.insertAdjacentHTML("beforeEnd", "<div  class='yellow' style='height:" + mas[i] * 10 + "px'>" + mas[i] + "");
+
+//
+//                    chart.innerHTML = div;
+//                    chart.innerHTML = '<div class="yellow"></div>';
+                } else {
+//                    chart.innerHTML = '<div class="red"></div>';
+                    chart.insertAdjacentHTML("beforeEnd", "<div  class='red' style='height:" + mas[i] * 10 + "px'>" + mas[i] + "");
+                }
+            }
+//            chart.innerHTML = '<b>тест</b>';
+//            chart.innerHTML = '<div class="red">5</div>'
+            /* 1. Вставляет TBODY в документ сразу. а затем элементы */
+            var appendFirst = new function () {
+                var benchTable;
+                this.setup = function () {
+                    // очистить всё
+                    benchTable = document.getElementById('chart');
+                    while (benchTable.firstChild) {
+                        benchTable.removeChild(benchTable.firstChild);
+                    }
+                };
+                this.work = function () {
+                    // встаить TBODY и элементы
+                    var tbody = document.createElement('TBODY');
+                    benchTable.appendChild(tbody);
+                    for (var i = 0; i < 20; i++) {
+                        var tr = document.createElement('TR');
+                        tbody.appendChild(tr);
+                        for (var j = 0; j < 20; j++) {
+                            var td = document.createElement('td');
+                            td.appendChild(document.createTextNode('' + i.toString(20) + j.toString(20)));
+                            tr.appendChild(td);
+                        }
+                    }
+                };
+            };
+
+        </script>
+    </body>
+</html>
