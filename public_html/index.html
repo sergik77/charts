@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/css.css">
+
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div class="chart">
+
+        </div>
+        <section>
+            <div class="row">
+                <div class="col-6">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="col-6">
+
+                    <input type="range" name="summ1" min="100000" max="5000000" step="100000" value="500000" oninput="funRen()" id="summ1-range">
+                    <p id="one"></p>
+
+                    <div id="red"></div>
+                    <input type="range" name="summ2" min="1" max="10" step="1" value="3" oninput="funRen()" id="summ2-range">
+                    <p id="too"></p>
+
+
+                </div>
+            </div>    
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>        
+        <script>
+
+//            alert(years);
+            var date = new Date();
+            var time = date.getFullYear();
+            var year = new Array();
+            var summ1 = document.getElementById('summ1-range').value;
+            var summ2 = document.getElementById('summ2-range').value;
+            var p1 = document.getElementById('one');
+            p1.innerHTML = summ1;
+            var p2 = document.getElementById('too');
+            p2.innerHTML = summ2;
+            for (var i = 0, max = 10; i < max; i++) {
+                time = time + 1;
+                var times = parseFloat(time);
+                year.push(times);
+//alert(year);
+            }
+
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            function funRen() {
+
+                for (var i = 0; i < summ2; i++) {
+                    summ1 = summ1 * 0.11;
+//            console.log(summ3);        
+
+
+
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'bar',
+
+                        // The data for our dataset
+                        data: {
+                            labels: [year, "2020", '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2028', '2030'],
+                            datasets: [{
+                                    label: 'My First dataset',
+                                    backgroundColor: 'rgb(255, 99, 132)',
+                                    borderColor: 'rgb(255, 99, 132)',
+                                    data: [summ1]
+
+                                }, {
+                                    label: 'Line Dataset',
+                                    data: [50, 0, 10, 5, 2, 20, 30, 45, 45, 45, 45],
+
+                                }, {
+                                    label: 'Dataset',
+                                    backgroundColor: 'rgb(255, 99, 132)',
+                                    borderColor: 'rgb(255, 99, 132)',
+                                    data: [0, 10, 5, 2, 20, 30, 45, 45, 45, 45, 50],
+
+                                }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                        stacked: true
+                                    }],
+                                yAxes: [{
+                                        stacked: true
+                                    }]
+                            }
+                        }
+                    });
+                }
+            }
+
+
+//options = {
+//    scales: {
+//        xAxes: [{
+//            barPercentage: 0.5,
+//            barThickness: 6,
+//            maxBarThickness: 8,
+//            minBarLength: 2,
+//            gridLines: {
+//                offsetGridLines: true
+//            }
+//        }]
+//    }
+//        var myBarChart = new Chart(ctx, {
+//    type: 'bar',
+//    // The data for our dataset
+//    data: {
+//        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//        datasets: [{
+//            label: 'My First dataset',
+//            backgroundColor: 'rgb(255, 99, 132)',
+//            borderColor: 'rgb(255, 99, 132)',
+//            data: [0, 10, 5, 2, 20, 30, 45]
+//        }]
+//    },
+//    options: options
+//});
+        </script>
+
+    </body>
+</html>
