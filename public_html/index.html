@@ -39,29 +39,25 @@ and open the template in the editor.
         <script>
 
 //            alert(years);
-            var date = new Date();
-            var time = date.getFullYear();
-            var year = new Array();
-            var summ1 = document.getElementById('summ1-range').value;
-            var summ2 = document.getElementById('summ2-range').value;
-            var p1 = document.getElementById('one');
-            p1.innerHTML = summ1;
-            var p2 = document.getElementById('too');
-            p2.innerHTML = summ2;
-            for (var i = 0, max = 10; i < max; i++) {
-                time = time + 1;
-                var times = parseFloat(time);
-                year.push(times);
+//            var date = new Date();
+//            var time = date.getFullYear();
+//            var year = new Array();
+//            var summ1 = document.getElementById('summ1-range').value;
+//            var summ2 = document.getElementById('summ2-range').value;
+//            var p1 = document.getElementById('one');
+//            p1.innerHTML = summ1;
+//            var p2 = document.getElementById('too');
+//            p2.innerHTML = summ2;
+//            for (var i = 0, max = 10; i < max; i++) {
+//                time = time + 1;
+//                var times = parseFloat(time);
+//                year.push(times);
 //alert(year);
-            }
+//            }
 
 
             var ctx = document.getElementById('myChart').getContext('2d');
-            function funRen() {
-
-                for (var i = 0; i < summ2; i++) {
-                    summ1 = summ1 * 0.11;
-//            console.log(summ3);        
+///            console.log(summ3);        
 
 
 
@@ -71,12 +67,12 @@ and open the template in the editor.
 
                         // The data for our dataset
                         data: {
-                            labels: [year, "2020", '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2028', '2030'],
+                            labels: [ "2020", '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2028', '2030'],
                             datasets: [{
                                     label: 'My First dataset',
                                     backgroundColor: 'rgb(255, 99, 132)',
                                     borderColor: 'rgb(255, 99, 132)',
-                                    data: [summ1]
+                                    data: [50, 0, 10, 5, 2, 20, 30, 45, 45, 45, 45]
 
                                 }, {
                                     label: 'Line Dataset',
@@ -103,10 +99,7 @@ and open the template in the editor.
                             }
                         }
                     });
-                }
-            }
-
-
+ //
 //options = {
 //    scales: {
 //        xAxes: [{
